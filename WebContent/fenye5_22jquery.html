@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>测试</title>
+<script src="js/jquery-3.3.1.min.js">
+</script>
+
+</head>
+<body>
+ <div class="job-list">
+ <div class="page">   
+    <a class="cur" id="id1">1</a>
+    <a class="cur" >2</a>
+</div>                
+</div>
+<script>
+	$(function(){
+		$("#id1").click(function(){
+			$.get("/myweb/pagJson.do?currentPage=1",function(data,status){
+				alert("数据: " + data + "\n状态: " + status);
+			});
+		});
+	});
+</script>
+</body>
+</html>
