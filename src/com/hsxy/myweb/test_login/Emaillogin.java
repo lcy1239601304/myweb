@@ -88,18 +88,13 @@ public class Emaillogin extends HttpServlet {
 			 //将数据写入流中
 			//response.getWriter().write(jsonStr);
 			//response.sendRedirect(request.getContextPath()+"");			
-			// 创建Cookie
-			Cookie cookemail = new Cookie("email", email);
-			Cookie cookstatus = new Cookie("status", "1");
+			// 创建Session
+			session.setAttribute("email", email);
+			session.setAttribute("status", "1");
 			// 有效期,秒为单位
-			cookemail.setMaxAge(3600);			
-			cookstatus.setMaxAge(3600);
-			cookemail.setPath(request.getContextPath());
-			cookstatus.setPath(request.getContextPath());
-			// 设置cookie
-			response.addCookie(cookemail);
-			response.addCookie(cookstatus);
-			response.sendRedirect(request.getContextPath());
+		String	uri=request.getContextPath();
+		uri = response.encodeRedirectURL(uri);
+			response.sendRedirect(uri);
 		}
 	}
 
